@@ -19,7 +19,7 @@ function _get_latest_release() {
             exit 1
             ;;
     esac
-    latest=$(curl -sL https://api.github.com/repos/davidnewhall/unpackerr/releases/latest | grep "${arch}.linux" | grep browser_download_url | cut -d \" -f4) || {
+    latest=$(curl -sL https://api.github.com/repos/davidnewhall/unpackerr/releases/latest | grep "linux_${arch}" | grep browser_download_url | cut -d \" -f4) || {
         echo "Failed to query GitHub for latest version"
         exit 1
     }
