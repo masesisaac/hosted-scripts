@@ -63,9 +63,9 @@ dir_mode = "0755"
 EOF
     # Add API data to config for installed arrs.
     if [[ -f $HOME/.install/.sonarr.lock ]]; then 
-        sonarr_base=$(sed -n 's|\(.*\)<UrlBase>\(.*\)</UrlBase>|\2|p' "$HOME/.config/Sonarr/config.xml")
-        sonarr_api=$(sed -n 's|\(.*\)<ApiKey>\(.*\)</ApiKey>|\2|p' "$HOME/.config/Sonarr/config.xml")
-        sonarr_port=$(sed -n 's|\(.*\)<Port>\(.*\)</Port>|\2|p' "$HOME/.config/Sonarr/config.xml")
+        sonarr_base=$(sed -n 's|\(.*\)<UrlBase>\(.*\)</UrlBase>|\2|p' "$HOME/.config/sonarr/config.xml")
+        sonarr_api=$(sed -n 's|\(.*\)<ApiKey>\(.*\)</ApiKey>|\2|p' "$HOME/.config/sonarr/config.xml")
+        sonarr_port=$(sed -n 's|\(.*\)<Port>\(.*\)</Port>|\2|p' "$HOME/.config/sonarr/config.xml")
         echo "[[sonarr]]" >> "$HOME/.config/unpackerr/unpackerr.conf"
         echo "  url = \"http://${subnet}:${sonarr_port}/${sonarr_base}\"" >> "$HOME/.config/unpackerr/unpackerr.conf"
         echo "  api_key = \"${sonarr_api}\"" >> "$HOME/.config/unpackerr/unpackerr.conf"
@@ -77,9 +77,9 @@ EOF
     fi
     
     if [[ -f $HOME/.install/.radarr.lock ]]; then
-        radarr_api=$(sed -n 's|\(.*\)<ApiKey>\(.*\)</ApiKey>|\2|p' "$HOME/.config/Radarr/config.xml")
-        radarr_port=$(sed -n 's|\(.*\)<Port>\(.*\)</Port>|\2|p' "$HOME/.config/Radarr/config.xml")
-        radarr_base=$(sed -n 's|\(.*\)<UrlBase>\(.*\)</UrlBase>|\2|p' "/$HOME/.config/Radarr/config.xml")
+        radarr_api=$(sed -n 's|\(.*\)<ApiKey>\(.*\)</ApiKey>|\2|p' "$HOME/.config/radarr/config.xml")
+        radarr_port=$(sed -n 's|\(.*\)<Port>\(.*\)</Port>|\2|p' "$HOME/.config/radarr/config.xml")
+        radarr_base=$(sed -n 's|\(.*\)<UrlBase>\(.*\)</UrlBase>|\2|p' "/$HOME/.config/radarr/config.xml")
         echo " [[radarr]]" >> "$HOME/.config/unpackerr/unpackerr.conf"
         echo "  url = \"http://${subnet}:${radarr_port}/${radarr_base}\"" >> "$HOME/.config/unpackerr/unpackerr.conf"
         echo "  api_key = \"${radarr_api}\"" >> "$HOME/.config/unpackerr/unpackerr.conf"
